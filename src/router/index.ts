@@ -6,7 +6,8 @@ import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
 import ProductDetailView from '@/views/ProductDetailView.vue';
 import ProductList from '@/views/ProductList.vue';
-
+import SearchViewVue from '@/views/SearchView.vue';
+import ResultsView from '@/views/ResultsView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,9 +30,6 @@ const router = createRouter({
     {
       path: '/counter',
       name: 'counter',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: CounterView
     },
     {
@@ -48,6 +46,16 @@ const router = createRouter({
       path: '/products',
       name: 'products',
       component: ProductList
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: SearchViewVue
+    },
+    {
+      path: '/resultats',
+      name: 'resultats',
+      component: ResultsView
     }
   ]
 })
