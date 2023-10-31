@@ -4,14 +4,31 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
-  <RouterLink to="/contact">Contact</RouterLink>
-  <RouterLink to="/user/1/carlos">User</RouterLink>
+  <nav>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/about">About</RouterLink>
+    <RouterLink to="/contact">Contact</RouterLink>
+    <RouterLink to="/user/1/carlos">User</RouterLink>
+    <RouterLink to="/products">Product List</RouterLink>
+
+  </nav>
   <RouterView />
 </template>
 
 <style scoped>
+nav {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 /* header {
   line-height: 1.5;
   max-height: 100vh;
@@ -22,12 +39,7 @@ import { RouterLink, RouterView } from 'vue-router'
   margin: 0 auto 2rem;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+
 
 nav a.router-link-exact-active {
   color: var(--color-text);
