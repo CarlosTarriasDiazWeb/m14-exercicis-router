@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CounterView from '@/views/CounterView.vue';
-import UserView from '@/views/UserView.vue';
 import HomeView from '@/views/HomeView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
@@ -26,16 +24,6 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: ContactView
-    },
-    {
-      path: '/counter',
-      name: 'counter',
-      component: CounterView
-    },
-    {
-      path: '/user/:postId/:username',
-      name: 'user',
-      component: UserView
     },
     {
       path: '/producte/:id',

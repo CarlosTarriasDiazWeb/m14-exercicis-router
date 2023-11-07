@@ -8,11 +8,12 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/about">About</RouterLink>
     <RouterLink to="/contact">Contact</RouterLink>
-    <RouterLink to="/user/1/carlos">User</RouterLink>
     <RouterLink to="/products">Product List</RouterLink>
     <RouterLink to="/search">Search</RouterLink>
   </nav>
-  <RouterView />
+  <section>
+    <RouterView />
+  </section>
 </template>
 
 <style scoped>
@@ -21,7 +22,11 @@ nav {
   gap: 1.5rem;
   width: 100%;
   font-size: 20px;
-  margin-top: 2rem;
+  margin: 2rem 1.5rem;
+}
+
+section {
+  padding: 1.5rem;
 }
 
 a {

@@ -1,32 +1,29 @@
 <script setup lang="ts">
 import { computed, ref, type ComputedRef, type Ref } from 'vue';
 import { useRoute } from 'vue-router';
+import type { Product } from "../models/Product";
+import ProductService from "../services/ProductService";
 
-
-interface Product {
-    id: number,
-    name: string,
-    category: string,
-    price: number
-}
 
 const route = useRoute();
 
-const products: Ref<Product[]> = ref([
-    { id: 1, name: 'product_1', category: 'basics', price: 10.54 },
-    { id: 2, name: 'product_2', category: 'convenience', price: 20.50 },
-    { id: 3, name: 'product_3', category: 'industrial', price: 32.50 },
-    { id: 4, name: 'product_4', category: 'basics', price: 9.99 },
-    { id: 5, name: 'product_5', category: 'emergency', price: 19.99 },
-    { id: 6, name: 'product_6', category: 'convenience', price: 29.99 },
+const productService = new ProductService();
 
-])
+const products: Ref<Product[]> = ref(productService.getProducts());
 
-const searched_products: ComputedRef<Product[] | undefined> = computed(() => products.value.filter(product => product.name.toLowerCase().startsWith(route.query.search as string)));
-
+const searched_products = computed<Product[]>(() => products.value.filter(product => product.name.toLowerCase().startsWith(route.query.search as string)));
 
 </script>
 
 <template>
     <h1>Results page</h1>
+    <section v-if="searched_products?.length > 0">
+        <article v-for="product in searched_products" :key="product.id">
+            <h2>{{ product.name }}</h2>
+            <RouterLink :to="{ name: 'product', params: { id: product.id } }">Go to Detail</RouterLink>
+        </article>
+    </section>
+    <section v-else>
+        <p>There are no matches.</p>
+    </section>
 </template>
